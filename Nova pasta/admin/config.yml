@@ -1,28 +1,33 @@
 backend:
   name: git-gateway
-  branch: main # Certifique-se que sua branch principal se chama main
+  branch: main # Se o seu GitHub usar "master", troque aqui para master
 
-media_folder: "images/uploads" # Onde as fotos novas vão ficar guardadas
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "avisos"
     label: "Mural PASCOM"
-    folder: "content/avisos" # Onde os textos do mural serão salvos
+    folder: "content/avisos"
     create: true
+    slug: "{{slug}}"
     fields:
       - {label: "Título", name: "title", widget: "string"}
-      - {label: "Data de Publicação", name: "date", widget: "datetime"}
-      - {label: "Capa do Aviso", name: "image", widget: "image"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Imagem de Capa", name: "image", widget: "image"}
       - {label: "Texto do Aviso", name: "body", widget: "markdown"}
 
-  - name: "equipe"
-    label: "Pároco e Vigário"
+  - name: "horarios"
+    label: "Horários de Missas"
     files:
-      - label: "Informações do Pároco"
-        name: "paroco"
-        file: "content/paroco.json"
+      - label: "Tabela de Missas"
+        name: "missas"
+        file: "content/missas.json"
         fields:
-          - {label: "Nome", name: "nome", widget: "string"}
-          - {label: "Foto", name: "foto", widget: "image"}
-          - {label: "Descrição", name: "descricao", widget: "text"}
+          - label: "Lista de Missas"
+            name: "lista"
+            widget: "list"
+            fields:
+              - {label: "Dia", name: "dia", widget: "string"}
+              - {label: "Local", name: "local", widget: "string"}
+              - {label: "Hora", name: "hora", widget: "string"}
