@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main # Certifique-se que sua branch principal se chama main
+
+media_folder: "images/uploads" # Onde as fotos novas vão ficar guardadas
+public_folder: "/images/uploads"
+
+collections:
+  - name: "avisos"
+    label: "Mural PASCOM"
+    folder: "content/avisos" # Onde os textos do mural serão salvos
+    create: true
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Data de Publicação", name: "date", widget: "datetime"}
+      - {label: "Capa do Aviso", name: "image", widget: "image"}
+      - {label: "Texto do Aviso", name: "body", widget: "markdown"}
+
+  - name: "equipe"
+    label: "Pároco e Vigário"
+    files:
+      - label: "Informações do Pároco"
+        name: "paroco"
+        file: "content/paroco.json"
+        fields:
+          - {label: "Nome", name: "nome", widget: "string"}
+          - {label: "Foto", name: "foto", widget: "image"}
+          - {label: "Descrição", name: "descricao", widget: "text"}
