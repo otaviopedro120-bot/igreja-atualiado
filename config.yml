@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main # Ou 'master', dependendo do seu GitHub
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pascom"
+    label: "Postagens do Mural"
+    folder: "content/pascom" # Onde as notícias serão salvas
+    create: true # Permite criar novos posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Título da Notícia", name: "title", widget: "string"}
+      - {label: "Data de Publicação", name: "date", widget: "datetime"}
+      - {label: "Imagem de Capa", name: "image", widget: "image"}
+      - {label: "Texto da Notícia", name: "body", widget: "markdown"}
